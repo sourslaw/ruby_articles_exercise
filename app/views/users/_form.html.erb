@@ -1,0 +1,33 @@
+<% if @user.errors.any? %>
+  <h2>the following errors prevented the user from being created</h2>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li>
+        <%= msg %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with(model: @user, local: true) do |f| %>
+  <p>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </p>
+
+  <p>
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </p>
+
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  </p>
+
+  <p>
+    <%= f.submit "sign up" %>
+  </p>
+<% end %>
+
+<%= link_to 'cancel & return to index', articles_path %>
