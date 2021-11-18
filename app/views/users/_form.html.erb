@@ -26,7 +26,7 @@
   </p>
 
   <p>
-    <%= f.submit "sign up" %>
+    <%= f.submit(@user.new_record? ? "sign up" : "update account") %>
   </p>
 <% end %>
 

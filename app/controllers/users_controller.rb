@@ -16,6 +16,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+
+    if @user.update( user_params ) # make title and description available to use
+      flash[:notice] = "you user account information was successfully updated"
+      redirect_to articles_path
+    else
+      render 'edit' # render/go to this page
+    end
+    
+  end
+
 
   private
 
