@@ -2,6 +2,7 @@
 
 <p><strong>Title: </strong><%= @article.title %></p>
 <p><strong>Description: </strong><%= @article.description %></p>
+<p><strong>By: </strong><%= @article.user.username %></p>
 
 <%= link_to 'edit article', edit_article_path %> |
 <%= link_to 'delete article', article_path(@article), method: :delete, data: { confirm: "are you sure you want to delete this article ?"} %> |
