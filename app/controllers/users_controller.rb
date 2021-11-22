@@ -6,6 +6,11 @@ class UsersController < ApplicationController
 
   end
 
+  def index
+    @users = User.all
+
+  end
+
   def new
     @user = User.new
   end
@@ -32,7 +37,7 @@ class UsersController < ApplicationController
 
     if @user.update( user_params ) # make title and description available to use
       flash[:notice] = "you user account information was successfully updated"
-      redirect_to articles_path
+      redirect_to @user
     else
       render 'edit' # render/go to this page
     end

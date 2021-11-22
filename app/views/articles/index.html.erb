@@ -15,7 +15,7 @@
     <% @articles.each do |article| %>
       <tr>
 
-        <td><%= article.user.username %></td>
+        <td><%= link_to article.user.username, user_path(article.user) %></td>
         <td><%= article.title %></td>
         <td><%= article.description %></td>
         <td><%= link_to 'show', article_path(article) %></td>
@@ -28,4 +28,5 @@
 </table>
 
 <%= link_to 'create new article', new_article_path %> |
+<%= link_to 'view user profiles', users_path %> |
 <%= link_to 'home', root_path %>

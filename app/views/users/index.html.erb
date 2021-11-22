@@ -1,0 +1,33 @@
+<h1>bloggers listing page . . . </h1>
+
+<table>
+
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Article count</th>
+      <th>Joined</th>
+
+      <th colspan="2">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+
+        <td><%= user.username %></td>
+        <td><%= pluralize(user.articles.count, "article") %></td>
+        <td><%= time_ago_in_words(user.created_at) %></td>
+
+        <td><%= link_to 'view profile', user_path(user) %></td>
+        <td><%= link_to 'edit', edit_user_path(user) %></td>
+     
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>
+
+<%= link_to 'view the articles index', articles_path %> |
+<%= link_to 'home', root_path %>
