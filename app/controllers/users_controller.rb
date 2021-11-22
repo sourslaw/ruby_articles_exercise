@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
+  
+  before_action :set_user, only: [:show, :edit, :update]
 
 
   def show
-    @user = User.find(params[:id])
-
   end
 
   def index
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      session[:user_id] = @user.id
       flash[:notice] = "welcome to the blog #{@user.username}, you have successfully signed up"
       redirect_to articles_path
     else
@@ -29,11 +30,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
-    @user = User.find(params[:id])
 
     if @user.update( user_params ) # make title and description available to use
       flash[:notice] = "you user account information was successfully updated"
@@ -49,6 +48,10 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:username, :email, :password) # require and permit the article object
+  end
+
+  def set_user
+    @user = User.find(params[:id])
   end
 
 end
