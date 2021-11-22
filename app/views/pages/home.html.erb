@@ -3,5 +3,10 @@
 <%= link_to 'view the about page', about_path %> |
 <%= link_to 'view the articles index', articles_path %> |
 <%= link_to 'view user profiles', users_path %> |
+<% if logged_in? %>
+  <%= link_to 'logout', logout_path, method: :delete %> |
+<% else %>
+  <%= link_to 'log in', login_path %> |
+<% end %> |
 <%= link_to 'sign up', signup_path %>
 

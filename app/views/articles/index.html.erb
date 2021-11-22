@@ -1,5 +1,16 @@
 <h1>articles listing page . . . </h1>
 
+<%= link_to 'create new article', new_article_path %> |
+<%= link_to 'view user profiles', users_path %> |
+<%= link_to 'home', root_path %> |
+
+<% if logged_in? %>
+  <%= link_to current_user.username, user_path(current_user) %> |
+  <%= link_to 'logout', logout_path, method: :delete %> |
+<% else %>
+  <%= link_to 'log in', login_path %> |
+<% end %>
+
 <table>
 
   <thead>
@@ -27,6 +38,4 @@
 
 </table>
 
-<%= link_to 'create new article', new_article_path %> |
-<%= link_to 'view user profiles', users_path %> |
-<%= link_to 'home', root_path %>
+<%= will_paginate @articles %>
