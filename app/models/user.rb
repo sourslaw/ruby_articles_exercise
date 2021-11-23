@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   before_save { self.email = email.downcase } # alter object before_save
 
-  has_many :articles
+  has_many :articles, dependent: :destroy # any associaterd dependents (articles) will be destoryed as well
   
   validates :username, 
     presence: true, 
