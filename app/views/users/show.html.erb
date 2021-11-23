@@ -1,6 +1,9 @@
 <h1><%= @user.username %>'s profile</h1>
 
 <%= gravatar_for @user, size: 85 %><br>
+
+<%= "( A D M I N ) | " if current_user.admin? %>
+
 <% if logged_in? && @user == current_user %>
   <%= link_to 'edit your profile', edit_user_path(@user) %> |
   <%= link_to 'delete your profile', user_path(current_user), method: :delete, data: { confirm: "are you sure you want to delete your profile ?"} %>

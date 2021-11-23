@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-    session[:user_id] = nil # destroy the session id after the user is gone. if not, will throw error, as it will look for this cookie
+    session[:user_id] = nil if @user == current_user # destroy the session id after the user is gone. if not, will throw error, as it will look for this cookie
     flash[:notice] = "your user account and all associated articles were successfully deleted"
     redirect_to root_path
   end
@@ -63,8 +63,8 @@ class UsersController < ApplicationController
   end
 
   def require_same_user
-    if current_user != @user
-      flash[:alert] = "you can only edit your own profile"
+    if current_user != @user && !current_user.admin?
+      flash[:alert] = "you can only edit or delete your own profile"
       redirect_to @user
     end
   end
