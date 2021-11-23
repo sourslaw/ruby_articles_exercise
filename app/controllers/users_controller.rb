@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   
-  before_action :set_user, only: [:show, :edit, :update]
-
+  before_action :set_user, only: [:show, :edit, :update, :destroy ]
+  before_action :require_user, except: [ :show, :index ] # using the require_user helper 
+  before_action :require_same_user, only: [ :edit, :update, :destroy ]
 
   def show
   end
@@ -43,6 +44,13 @@ class UsersController < ApplicationController
     
   end
 
+  def destroy
+    @user.destroy
+    session[:user_id] = nil # destroy the session id after the user is gone. if not, will throw error, as it will look for this cookie
+    flash[:notice] = "your user account and all associated articles were successfully deleted"
+    redirect_to root_path
+  end
+
 
   private
 
@@ -52,6 +60,13 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def require_same_user
+    if current_user != @user
+      flash[:alert] = "you can only edit your own profile"
+      redirect_to @user
+    end
   end
 
 end

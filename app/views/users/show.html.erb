@@ -2,7 +2,9 @@
 
 <%= gravatar_for @user, size: 85 %><br>
 <% if logged_in? && @user == current_user %>
-  <%= link_to 'edit your profile', edit_user_path(@user) %>
+  <%= link_to 'edit your profile', edit_user_path(@user) %> |
+  <%= link_to 'delete your profile', user_path(current_user), method: :delete, data: { confirm: "are you sure you want to delete your profile ?"} %>
+
 <% end %>
 
 <h1><%= @user.username %>'s articles  . . . </h1>
