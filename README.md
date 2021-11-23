@@ -1,7 +1,9 @@
 ![alt text](public/screenshot.png)
 
 ## Description
-- simple ruby on rails web application to create, read, update, and destroy articles
+- Ruby on Rails web application to create, read, update, and destroy articles
+- Features Admininstrative user access
+  - Admins may edit, update, and destroy non-admin user profiles and articles
 
 ### Installation
 - The project is uploaded to [GitHub](https://github.com/) at the following repository: [here](https://github.com/sourslaw/ruby_articles_exercise)
