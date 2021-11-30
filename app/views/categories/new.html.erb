@@ -1,5 +1,15 @@
 <h1>create a new category  . . . </h1>
 
+<% if @category.errors.any? %>
+  <h2>the following errors prevented the category from being created</h2>
+  <ul>
+    <% @category.errors.full_messages.each do |msg| %>
+      <li>
+        <%= msg %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 
 <%= form_with(model: @category, local: true) do |f| %>
   <p>
