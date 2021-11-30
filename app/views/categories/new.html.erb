@@ -1,0 +1,15 @@
+<h1>create a new category  . . . </h1>
+
+
+<%= form_with(model: @category, local: true) do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'cancel & return home', root_path %>
