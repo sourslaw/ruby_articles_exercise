@@ -4,6 +4,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @category = Category.create(name: "Sports")
     @admin_user = User.create(username: "johnnytest", email: "jtest@me.com", password: "passwordtest", admin: true)
+    # sign_in_as(@admin_user)
   end
 
   test "should get index" do
@@ -26,7 +27,7 @@ class CategoriesControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to category_url(Category.last)
   end
 
-  test "should note create category if not admin" do
+  test "should not create category if not admin" do
     assert_no_difference('Category.count') do
       post categories_url, params: { category: { name: "Travel" } }
     end

@@ -1,5 +1,11 @@
 <h1>categories . . . </h1>
 
+<% if logged_in? && current_user.admin? %>
+  <p>add a new category:
+    <td><%= link_to 'new', new_category_path(@category) %></td>
+  </p>
+<% end %>
+
 
 <table>
 
@@ -17,7 +23,6 @@
         <td><%= category.name %></td>
         <td><%= time_ago_in_words(category.created_at) %></td>
         <td><%= link_to 'show', category_path(category) %></td>
-
 
       </tr>
     <% end %>
