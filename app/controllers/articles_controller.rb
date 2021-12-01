@@ -22,6 +22,8 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    byebug
+    
     @article = Article.new( article_params ) 
     @article.user = current_user
     
@@ -55,7 +57,7 @@ class ArticlesController < ApplicationController
   end
 
   def article_params
-    params.require(:article).permit(:title, :description) # require and permit the article object
+    params.require(:article).permit(:title, :description, category_ids: []) # require and permit the article object
   end
 
   def require_same_user
