@@ -1,1 +1,3 @@
 <h1><%= @category.name %></h1>
+
+<p>created: <%= time_ago_in_words(@category.created_at) %> ago</p>
