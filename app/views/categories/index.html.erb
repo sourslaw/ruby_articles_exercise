@@ -13,6 +13,7 @@
     <tr>
       <th>Category Name</th>
       <th>Created At</th>
+      <th>Articles</th>
       <th colspan="3">Actions</th>
     </tr>
   </thead>
@@ -22,6 +23,7 @@
       <tr>
         <td><%= category.name %></td>
         <td><%= time_ago_in_words(category.created_at) %></td>
+        <td><%= pluralize(category.articles.count, "article") %></td>
         <td><%= link_to 'show', category_path(category) %></td>
 
       </tr>

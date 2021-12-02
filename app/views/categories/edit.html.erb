@@ -1,7 +1,7 @@
-<h1>create a new category  . . . </h1>
+<h1>edit the category name . . . </h1>
 
 <% if @category.errors.any? %>
-  <h2>the following errors prevented the category from being created</h2>
+  <h2>the following errors prevented the article from being saved</h2>
   <ul>
     <% @category.errors.full_messages.each do |msg| %>
       <li>
@@ -12,14 +12,14 @@
 <% end %>
 
 <%= form_with(model: @category, local: true) do |f| %>
+
   <p>
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_area :name %>
   </p>
 
   <p>
     <%= f.submit %>
   </p>
 <% end %>
-
-<%= link_to 'cancel & return to categories', categories_path %>
+<%= link_to 'cancel & return to category', category_path(@category) %>
