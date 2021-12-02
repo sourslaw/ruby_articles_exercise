@@ -22,7 +22,7 @@ class ArticlesController < ApplicationController
   end
 
   def create
-    byebug
+    # byebug
     
     @article = Article.new( article_params ) 
     @article.user = current_user
